@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".view.activity.PetActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/pets" />
+
+    <TextView
+        android:id="@+id/petDetailsName"
+        style="@style/title"
+        android:text="My Pet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/petDetailsType"
+        style="@style/cardText"
+        android:textStyle="italic"
+        android:text="type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pet_likes"
+        style="@style/cardTitle"
+        android:layout_marginTop="24dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/foodIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:src="@mipmap/baseline_close_grey"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            style="@style/iconText"
+            android:text="@string/food"/>
+
+
+        <ImageView
+            android:id="@+id/playIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:src="@mipmap/baseline_close_grey"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@+id/foodIcon"/>
+        <TextView
+            android:layout_width="match_parent"
+            style="@style/iconText"
+            android:text="@string/play"
+            android:layout_below="@+id/foodIcon"/>
+
+
+        <ImageView
+            android:id="@+id/cuddlesIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:src="@mipmap/baseline_close_grey"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@+id/playIcon"/>
+        <TextView
+            android:layout_width="match_parent"
+            style="@style/iconText"
+            android:text="@string/cuddles"
+            android:layout_below="@+id/playIcon"/>
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundGrey"
+    tools:context=".view.activity.AccountActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        style="@style/separator"
+        android:layout_marginTop="20dp"/>
+
+    <RelativeLayout
+        android:id="@+id/userInfoLayout"
+        android:paddingStart="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+
+        <!--User name-->
+        <TextView
+            android:id="@+id/userNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name"
+            style="@style/label"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userName"
+            style="@style/labelValue"
+            android:layout_alignParentEnd="true"/>
+
+
+
+        <ImageView
+            android:id="@+id/firstDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            style="@style/separator"
+            android:layout_below="@+id/userNameLabel"/>
+
+
+        <!--User email-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_email"
+            android:layout_below="@+id/firstDivider"
+            style="@style/label"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userEmail"
+            style="@style/labelValue"
+            android:layout_below="@+id/firstDivider"
+            android:text="Email"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/secondDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        style="@style/separator"/>
+
+    <TextView
+        android:id="@+id/petTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your pet"
+        android:paddingLeft="16dp"
+        style="@style/cardTitle"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="4dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        style="@style/separator"/>
+
+    <RelativeLayout
+        android:id="@+id/petInfoLayout"
+        android:paddingLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+
+        <!--Pet name-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pet_name"
+            style="@style/label"/>
+        <TextView
+            android:id="@+id/petName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/labelValue"
+            android:layout_alignParentEnd="true"
+            android:text="Name"/>
+
+
+        <ImageView
+            android:id="@+id/thirdDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            style="@style/separator"
+            android:layout_below="@+id/petName"/>
+
+
+        <!--Pet type-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pet_type"
+            style="@style/label"
+            android:layout_below="@+id/thirdDivider"/>
+        <TextView
+            android:id="@+id/petType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/labelValue"
+            android:layout_below="@+id/thirdDivider"
+            android:layout_alignParentEnd="true"/>
+
+
+        <ImageView
+            android:id="@+id/fourthDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            style="@style/separator"
+            android:layout_below="@+id/petType"/>
+
+
+        <!--Pet likes-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pet_likes"
+            style="@style/label"
+            android:layout_below="@+id/fourthDivider"/>
+        <TextView
+            android:id="@+id/petLikes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/labelValue"
+            android:layout_below="@+id/fourthDivider"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/lastDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        style="@style/separator"/>
+
+    <Button
+        android:id="@+id/editAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/account_edit"
+        style="@style/buttonPrimary"/>
+
+</LinearLayout>

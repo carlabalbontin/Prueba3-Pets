@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Pets</string>
+
+    <!--GENERAL-->
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="user_name">User name</string>
+    <string name="user_email">User email</string>
+    <string name="pet_name">Pet name</string>
+    <string name="pet_type">Pet type</string>
+    <string name="pet_likes">Pet likes</string>
+    <string name="food">Food</string>
+    <string name="play">Play</string>
+    <string name="cuddles">Cuddles</string>
+
+    <!--LOGIN-->
+    <string name="login">Log In</string>
+    <string name="signup">Sign Up</string>
+
+    <!--WELCOME-->
+    <string name="welcome_header">Welcome!</string>
+    <string name="welcome_description">To start using this app you must first upload some information. You can edit this later.</string>
+    <string name="add_photo">Take Photo</string>
+    <string name="submit">Submit</string>
+
+
+    <!--ACCOUNT-->
+    <string name="account_header">Your Account</string>
+    <string name="edit_account_header">Edit Your Account</string>
+    <string name="account_edit">Edit Information</string>
+    <string name="account_save">Save Information</string>
+
+
+    <!--FACEBOOK-->
+    <string name="facebook_application_id" translatable="false">424731801266664</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb424731801266664</string>
+    <string name="facebook_app_id">424731801266664</string>
+    <string name="fb_login_protocol_scheme">fb424731801266664</string>
+</resources>
