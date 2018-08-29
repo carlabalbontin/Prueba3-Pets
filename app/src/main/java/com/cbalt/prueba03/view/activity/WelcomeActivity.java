@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -15,6 +18,7 @@ import com.cbalt.prueba03.models.Likes;
 import com.cbalt.prueba03.view.presenter.contract.WelcomeContract;
 import com.cbalt.prueba03.view.presenter.WelcomePresenter;
 
+
 public class WelcomeActivity extends AppCompatActivity implements WelcomeContract.View {
 
     // Sólo se accederá cuando está signing up
@@ -22,7 +26,8 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeContrac
 
     Likes petLikes;
     WelcomePresenter presenter;
-    TextInputEditText userNameEt, petNameEt, petTypeEt;
+    TextInputEditText userNameEt, petNameEt;
+    Spinner petTypeSpinner;
     Button addPhotoButton, submitButton;
 
     @Override
@@ -35,10 +40,15 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeContrac
 
         userNameEt = findViewById(R.id.newUserName);
         petNameEt = findViewById(R.id.newPetName);
-        petTypeEt = findViewById(R.id.newPetType);
+        petTypeSpinner = findViewById(R.id.newPetType);
         addPhotoButton = findViewById(R.id.addPhotoBtn);
         submitButton = findViewById(R.id.submitNewPet);
 
+        // Poblar el spinner con data
+        ArrayAdapter<CharSequence> spinnerOptions = ArrayAdapter.createFromResource(WelcomeActivity.this,
+                R.array.pet_types, android.R.layout.simple_spinner_item);
+        spinnerOptions.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        petTypeSpinner.setAdapter(spinnerOptions);
 
 
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +57,7 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeContrac
                 String userName = userNameEt.getText().toString();
                 String petName = petNameEt.getText().toString();
                 String petPhoto = "";
-                String petType = petTypeEt.getText().toString();
+                String petType = petTypeSpinner.getSelectedItem().toString();
 
                 presenter.processPetForm(userName, petName, petPhoto, petType, petLikes);
 
@@ -56,10 +66,22 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeContrac
 
     }
 
+
+
     @Override
     protected void onStart() {
         super.onStart();
         presenter.findUserName();
+    }
+
+
+    @Override
+    protected void onPause() {
+        if(petTypeSpinner.getSelectedItemPosition() != 0){
+            String text = petTypeSpinner.getSelectedItem().toString();
+            Log.d("PAUSE", text);
+        }
+        super.onPause();
     }
 
     @Override

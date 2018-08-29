@@ -1,5 +1,8 @@
 package com.cbalt.prueba03.view.presenter;
 
+import android.util.Log;
+
+import com.cbalt.prueba03.R;
 import com.cbalt.prueba03.data.ManagePet;
 import com.cbalt.prueba03.data.ManageUser;
 import com.cbalt.prueba03.models.Likes;
@@ -12,9 +15,11 @@ public class EditAccountPresenter implements EditAccountContract.Presenter, OnLo
     EditAccountContract.View view;
     ManagePet managePet;
     ManageUser manageUser;
+    String[] petTypeArray;
 
-    public EditAccountPresenter(EditAccountContract.View view) {
+    public EditAccountPresenter(EditAccountContract.View view, String[] petTypeArray) {
         this.view = view;
+        this.petTypeArray = petTypeArray;
         managePet = new ManagePet(this);
         manageUser = new ManageUser(this);
     }
@@ -42,6 +47,22 @@ public class EditAccountPresenter implements EditAccountContract.Presenter, OnLo
         }
     }
 
+    private int getTypePosition(String petType){
+        int position = 0;
+        int index = 0;
+        if(petTypeArray != null){
+            for(String myType: petTypeArray){
+                if(myType.toLowerCase().equals(petType.toLowerCase())){
+                    position = index;
+                }
+                index++;
+            }
+        } else {
+            Log.d("TYPE", "--------------- array is null --------------");
+        }
+        return position;
+    }
+
     @Override
     public void findUserName() {
         manageUser.getUserInfo();
@@ -54,7 +75,8 @@ public class EditAccountPresenter implements EditAccountContract.Presenter, OnLo
 
     @Override
     public void loadPet(String name, String type, Likes likes) {
-        view.setPetInfo(name, type, likes);
+
+        view.setPetInfo(name, getTypePosition(type), likes);
     }
 
     @Override

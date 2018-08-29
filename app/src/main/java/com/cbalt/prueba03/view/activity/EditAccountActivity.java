@@ -5,8 +5,10 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.cbalt.prueba03.R;
@@ -19,7 +21,8 @@ public class EditAccountActivity extends AppCompatActivity implements EditAccoun
 
     Likes likes;
     EditAccountPresenter presenter;
-    TextInputEditText userNameEt, petNameEt, petTypeEt;
+    TextInputEditText userNameEt, petNameEt;
+    Spinner petTypeSpinner;
     CheckBox foodCb, playCb, cuddlesCb;
     Button saveButton;
 
@@ -32,13 +35,19 @@ public class EditAccountActivity extends AppCompatActivity implements EditAccoun
 
         userNameEt = findViewById(R.id.editUserName);
         petNameEt = findViewById(R.id.editPetName);
-        petTypeEt = findViewById(R.id.editPetType);
+        petTypeSpinner = findViewById(R.id.editPetType);
         saveButton = findViewById(R.id.saveAccount);
         foodCb = findViewById(R.id.checkbox_edit_food);
         playCb = findViewById(R.id.checkbox_edit_play);
         cuddlesCb = findViewById(R.id.checkbox_edit_cuddles);
 
-        presenter = new EditAccountPresenter(this);
+        // Poblar el spinner con data
+        ArrayAdapter<CharSequence> spinnerOptions = ArrayAdapter.createFromResource(EditAccountActivity.this,
+                R.array.pet_types, android.R.layout.simple_spinner_item);
+        spinnerOptions.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        petTypeSpinner.setAdapter(spinnerOptions);
+
+        presenter = new EditAccountPresenter(this, getResources().getStringArray(R.array.pet_types));
         presenter.petInformation(new UserFirebase().uid());
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +56,7 @@ public class EditAccountActivity extends AppCompatActivity implements EditAccoun
                 String userName = userNameEt.getText().toString();
                 String petName = petNameEt.getText().toString();
                 String petPhoto = "";
-                String petType = petTypeEt.getText().toString();
+                String petType = petTypeSpinner.getSelectedItem().toString();
                 presenter.processForm(userName, petName, petPhoto, petType, likes);
             }
         });
@@ -94,9 +103,9 @@ public class EditAccountActivity extends AppCompatActivity implements EditAccoun
     }
 
     @Override
-    public void setPetInfo(String name, String type, Likes likes) {
+    public void setPetInfo(String name, int type, Likes likes) {
         petNameEt.setText(name);
-        petTypeEt.setText(type);
+        petTypeSpinner.setSelection(type);
         foodCb.setChecked(likes.isFood());
         this.likes.setFood(likes.isFood());
         playCb.setChecked(likes.isPlay());

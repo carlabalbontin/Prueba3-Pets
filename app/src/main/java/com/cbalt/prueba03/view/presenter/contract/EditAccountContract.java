@@ -8,7 +8,7 @@ public interface EditAccountContract {
         void error(String error);
         void success();
         void setUserName(String name);
-        void setPetInfo(String name, String type, Likes likes);
+        void setPetInfo(String name, int typePosition, Likes likes);
     }
 
     interface Presenter {

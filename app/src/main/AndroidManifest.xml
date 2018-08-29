@@ -14,7 +14,6 @@
         <activity android:name=".view.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,6 +29,7 @@
         <activity android:name=".view.activity.SignUpActivity" />
         <activity
             android:name=".view.activity.EditAccountActivity"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/edit_account_header" />
         <activity android:name=".view.activity.PetActivity"
             android:parentActivityName=".view.activity.MainActivity">
